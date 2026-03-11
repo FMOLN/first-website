@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FMOLN - Discover Your Signature Scent</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
 </head>
@@ -114,8 +115,18 @@
     </footer>
 
     <script src="script.js"></script>
-    <!-- Netlify Identity — redirects after CMS login -->
+    <!-- Netlify Identity — handles invite/reset tokens and redirects to admin -->
     <script>
+        // If the URL contains an identity token (invite or password reset),
+        // redirect straight to /admin/ so the widget can process it there
+        if (window.location.hash && (
+            window.location.hash.includes('invite_token') ||
+            window.location.hash.includes('recovery_token') ||
+            window.location.hash.includes('confirmation_token')
+        )) {
+            window.location.href = '/admin/' + window.location.hash;
+        }
+
         if (window.netlifyIdentity) {
             window.netlifyIdentity.on("init", user => {
                 if (!user) {
