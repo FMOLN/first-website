@@ -1,0 +1,102 @@
+[
+  {
+    "name": "BOSS HUGO",
+    "brand": "Hugo Boss",
+    "price": "ETB 2,500",
+    "image": "photo_2025-10-06_11-15-11.jpg",
+    "gender": "Men",
+    "size": "100ml",
+    "concentration": "Eau de Toilette",
+    "description": "A bold, fresh fragrance with notes of apple, pine, and musk. BOSS HUGO is the scent of the confident, independent man who plays by his own rules."
+  },
+  {
+    "name": "Bleu De Chanel",
+    "brand": "Chanel",
+    "price": "ETB 4,500",
+    "image": "BleuDeChanel.JPG",
+    "gender": "Men",
+    "size": "100ml",
+    "concentration": "Eau de Parfum",
+    "description": "An ode to masculine freedom. A woody, aromatic fragrance for the man who defies convention with citrus, labdanum, and sandalwood."
+  },
+  {
+    "name": "Dior Sauvage",
+    "brand": "Dior",
+    "price": "ETB 2,800",
+    "image": "photo_2025-10-06_11-15-28.jpg",
+    "gender": "Men",
+    "size": "100ml",
+    "concentration": "Eau de Toilette",
+    "description": "Raw and noble. Dior Sauvage opens with a radiant burst of Calabrian bergamot, underpinned by a peppery Sichuan note and a smooth Ambroxan base."
+  },
+  {
+    "name": "Creed Aventus",
+    "brand": "Creed",
+    "price": "ETB 3,100",
+    "image": "photo_2025-10-06_11-15-04.jpg",
+    "gender": "Men",
+    "size": "100ml",
+    "concentration": "Eau de Parfum",
+    "description": "Inspired by the life of a historical emperor, Aventus celebrates strength, power, and success with notes of blackcurrant, birch, and oakmoss."
+  },
+  {
+    "name": "Creed Original Santal",
+    "brand": "Creed",
+    "price": "ETB 2,699",
+    "image": "photo_2025-10-06_11-15-08.jpg",
+    "gender": "Unisex",
+    "size": "100ml",
+    "concentration": "Eau de Parfum",
+    "description": "A warm, sensual blend of sandalwood, spices, and musk. Original Santal is a timeless fragrance that wraps you in pure luxury."
+  },
+  {
+    "name": "YOU Exclusive",
+    "brand": "Zadig & Voltaire",
+    "price": "ETB 3,599",
+    "image": "photo_2025-10-06_11-15-21.jpg",
+    "gender": "Women",
+    "size": "100ml",
+    "concentration": "Eau de Parfum",
+    "description": "A floral, addictive fragrance with a surprising freshness. YOU Exclusive captures a free-spirited femininity with peony, iris, and white musks."
+  },
+  {
+    "name": "Eclaire Perfume",
+    "brand": "Eclaire",
+    "price": "ETB 3,699",
+    "image": "photo_2025-10-06_11-15-01.jpg",
+    "gender": "Unisex",
+    "size": "100ml",
+    "concentration": "Eau de Parfum",
+    "description": "A sophisticated and modern scent with a luminous personality. Eclaire blends bright citrus with warm amber and soft woods for an unforgettable impression."
+  },
+  {
+    "name": "ASAD Lattafa Black",
+    "brand": "Lattafa",
+    "price": "ETB 3,200",
+    "image": "photo_2025-10-06_11-15-50.jpg",
+    "gender": "Men",
+    "size": "100ml",
+    "concentration": "Eau de Parfum",
+    "description": "A rich, powerful oriental fragrance. ASAD Black by Lattafa opens with spicy pepper and oud, settling into a deep, smoky base of musk and amber."
+  },
+  {
+    "name": "Khamrah Lattafa",
+    "brand": "Lattafa",
+    "price": "ETB 3,950",
+    "image": "photo_2025-10-06_11-15-26.jpg",
+    "gender": "Unisex",
+    "size": "100ml",
+    "concentration": "Eau de Parfum",
+    "description": "An intoxicating oriental gourmand fragrance. Khamrah combines notes of praline, vanilla, and oud to create a warm, addictive, and deeply luxurious scent."
+  },
+  {
+    "name": "Colour Me",
+    "brand": "Colour Me",
+    "price": "ETB 2,499",
+    "image": "photo_2025-10-06_11-15-49.jpg",
+    "gender": "Unisex",
+    "size": "100ml",
+    "concentration": "Eau de Parfum",
+    "description": "A vibrant, playful fragrance that expresses individuality. Colour Me blends fresh florals with soft musks for an everyday scent that leaves a lasting impression."
+  }
+]
