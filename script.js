@@ -75,26 +75,16 @@ async function fetchProducts() {
     container.innerHTML = `<div class="loading-state"><p>Curating your signature scent...</p></div>`;
 
     try {
-        // Netlify CMS creates one JSON file per product in _products/
-        // We fetch the directory listing to find all product files
-        const response = await fetch('/_products/');
-        if (!response.ok) throw new Error("No CMS folder");
-
-        const text = await response.text();
-
-        // Parse all .json filenames from the directory listing
-        const matches = [...text.matchAll(/href="([^"]+\.json)"/g)];
-        if (matches.length === 0) throw new Error("No product files found");
-
-        // Fetch each product file in parallel
-        const products = await Promise.all(
-            matches.map(m => fetch('/_products/' + m[1].split('/').pop()).then(r => r.json()))
-        );
-
+        // Fetch _products/index.json which we maintain manually
+        const response = await fetch('/_products/index.json');
+        if (!response.ok) throw new Error("No index.json");
+        const data = await response.json();
+        const products = Array.isArray(data) ? data : [data];
+        if (products.length === 0) throw new Error("Empty");
         displayProducts(products);
         handleSearch(products);
     } catch (e) {
-        // Fallback to hardcoded products (local dev or if CMS not set up yet)
+        // Fallback to hardcoded products
         displayProducts(FALLBACK_PRODUCTS);
         handleSearch(FALLBACK_PRODUCTS);
     }
@@ -110,7 +100,11 @@ function displayProducts(products) {
     }
 
     const cards = products.map(product => {
-        const imgPath = product.image ? `images/${product.image}` : 'images/default.jpg';
+        const imgPath = product.image
+            ? (product.image.startsWith('http') || product.image.startsWith('/')
+                ? product.image
+                : `images/${product.image}`)
+            : 'images/default.jpg';
         const safeName = product.name.replace(/'/g, "\\'");
         const safePrice = product.price.replace(/'/g, "\\'");
         const safeImage = (product.image || '').replace(/'/g, "\\'");
@@ -131,6 +125,8 @@ function displayProducts(products) {
     }).join('');
 
     container.innerHTML = `<div class="product-grid">${cards}</div>`;
+    // Cache all products so product-detail page can find CMS products too
+    try { localStorage.setItem('fmolnAllProducts', JSON.stringify(products)); } catch(e) {}
 }
 
 function handleSearch(allProducts) {
@@ -246,7 +242,14 @@ function displayProductDetails() {
         return;
     }
 
-    const product = FALLBACK_PRODUCTS.find(p =>
+    // Search localStorage cache first (set by fetchProducts), then fallback
+    let allProducts = FALLBACK_PRODUCTS;
+    try {
+        const cached = localStorage.getItem('fmolnAllProducts');
+        if (cached) allProducts = JSON.parse(cached);
+    } catch(e) {}
+
+    const product = allProducts.find(p =>
         p.name.trim().toLowerCase() === productName.trim().toLowerCase()
     );
 
@@ -256,7 +259,11 @@ function displayProductDetails() {
         return;
     }
 
-    const imgPath = product.image ? `images/${product.image}` : 'images/default.jpg';
+    const imgPath = product.image
+        ? (product.image.startsWith('http') || product.image.startsWith('/')
+            ? product.image
+            : `images/${product.image}`)
+        : 'images/default.jpg';
     document.getElementById('page-title').textContent = `FMOLN - ${product.name}`;
 
     const detailImage = document.getElementById('detail-image');
